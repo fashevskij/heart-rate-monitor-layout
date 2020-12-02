@@ -107,5 +107,4 @@ $RECYCLE.BIN/
 *.lnk
 .gitignore
 .idea/
-
-!/img/
+!/src/img/
