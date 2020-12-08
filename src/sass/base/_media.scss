@@ -128,5 +128,18 @@
          margin: 15px;
        }
    }
+  .modals {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    min-height: 300px;
+    padding: 8px;
+    &__close {
+      top: 5px;
+      right: 5px;
+
+    }
+  }
 }
 
