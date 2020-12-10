@@ -190,6 +190,15 @@
   text-align: left;
   margin-top: 70px;
 }
+.consultation .error {
+  border: 3px solid red;
+}
+.consultation label.error {
+  border: none;
+  color: white;
+  text-align: center;
+  margin-bottom: 15px;
+}
 
 .feed-form {
   margin-top: 36px;
@@ -537,6 +546,14 @@
 }
 .modals_mini {
   min-height: 140px;
+}
+.modals .error {
+  border: 1px solid red;
+}
+.modals label.error {
+  border: none;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 #consultation, #order, #thanks {

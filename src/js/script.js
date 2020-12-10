@@ -37,6 +37,31 @@ $(document).ready(function () {
             $('.overlay, #order').fadeIn('slow');
         });
     });
+
+    function validate(form){
+        $(form).validate({
+            rules:{
+                name: "required",
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: "Пожалуйста введите свое имя",
+                phone: "Пожалуйста введите свой номер телефона",
+                email: {
+                    required: "Пожалуйста введите свою почту",
+                    email: "Введите правильно почту, пример -> name@domain.com"
+                }
+            }
+        });
+    }
+
+    validate('#consultation-form');
+    validate('#consultation form');
+    validate('#order form');
 });
 
 
