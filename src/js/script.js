@@ -1,3 +1,5 @@
+
+/*переключение влкадок и подробности*/
 $(document).ready(function () {
     $('ul.catalog__tabs').on('click', 'li:not(.catalog__tab_active)', function () {
         $(this)
@@ -20,7 +22,7 @@ $(document).ready(function () {
     toggleSlide('.catalog-item__link');
     toggleSlide('.catalog-item__back');
 
-    //modal window
+    //modal window (модальные окна)
 
     $("[data-modal=consultation]").on('click',function(){
         $('.overlay, #consultation').fadeIn('slow');
@@ -37,7 +39,7 @@ $(document).ready(function () {
             $('.overlay, #order').fadeIn('slow');
         });
     });
-
+/**Валидация форм*/
     function validate(form){
         $(form).validate({
             rules:{
@@ -62,7 +64,35 @@ $(document).ready(function () {
     validate('#consultation-form');
     validate('#consultation form');
     validate('#order form');
+/*маска для инпута с телефоном*/
+    $('input[name=phone]').mask("(099) 999-99-99");
+/***ajax отправка формы на имейл локально***/
+    $('form').submit(function (e){
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url:"mailer/smart.php",
+            data: $(this).serialize()
+        }).done(function (){
+            $(this).find("input").val("");
+            $('#consultation,#order').fadeOut();
+            $('.overlay, #thanks').fadeIn('slow');
+            $('form').trigger('reset')
+        });
+        return false;
+    })
+/**Плавнй сролл вверх по клике на стрелку и ее появление на середине страницы**/
+    $(window).scroll(function (){
+        if($(this).scrollTop() > 1600) {
+            $('.pageup').fadeIn();
+            $("a[href^='#']").click(function(){
+                const _href = $(this).attr("href");
+                $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+                return false;
+            });
+        }else{
+            $('.pageup').fadeOut();
+        }
+    })
 });
-
-
 

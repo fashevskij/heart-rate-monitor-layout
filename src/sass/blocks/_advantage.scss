@@ -31,4 +31,13 @@
       text-decoration: underline;
     }
   }
+  .animation__heart {
+    animation-name: heart;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
 }
