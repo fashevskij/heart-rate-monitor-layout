@@ -67,32 +67,37 @@ $(document).ready(function () {
 /*маска для инпута с телефоном*/
     $('input[name=phone]').mask("(099) 999-99-99");
 /***ajax отправка формы на имейл локально***/
-    $('form').submit(function (e){
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url:"mailer/smart.php",
-            data: $(this).serialize()
-        }).done(function (){
-            $(this).find("input").val("");
-            $('#consultation,#order').fadeOut();
-            $('.overlay, #thanks').fadeIn('slow');
-            $('form').trigger('reset')
-        });
-        return false;
-    })
+
+$('form').submit(function (e){
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url:"mailer/smart.php",
+        data: $(this).serialize()
+    }).done(function (){
+        $(this).find("input").val("");
+        $('#consultation,#order').fadeOut();
+        $('.overlay, #thanks').fadeIn('slow');
+        $('form').trigger('reset')
+    });
+    return false;
+})
+
+
 /**Плавнй сролл вверх по клике на стрелку и ее появление на середине страницы**/
     $(window).scroll(function (){
         if($(this).scrollTop() > 1600) {
             $('.pageup').fadeIn();
-            $("a[href^='#']").click(function(){
-                const _href = $(this).attr("href");
-                $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
-                return false;
-            });
+
         }else{
             $('.pageup').fadeOut();
         }
     })
+    $(".pageup").on('click',function(){
+        const _href = $(this).attr("href");
+        $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+        return false;
+    });
+    new WOW().init();
 });
 

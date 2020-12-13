@@ -1,5 +1,9 @@
 @import "base/variables";
-
+@import "libs/bootstrap-reboot.min";
+@import "libs/fonts";
+@import "libs/bootstrap.min";
+@import "libs/fonts";
+@import "libs/animate";
 *{
   font-family: 'Museo Sans', sans-serif;
 }
@@ -8,6 +12,13 @@
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
+}
+
+iframe {
+  width: 100%;
+  height: 630px;
+  border: 0;
+
 }
 @import "blocks/promo";
 @import "blocks/header";
@@ -22,6 +33,7 @@
 @import "blocks/footer";
 @import "blocks/modal";
 @import "blocks/pageup";
+
 
 @import "base/animation";
 @import "base/media";
